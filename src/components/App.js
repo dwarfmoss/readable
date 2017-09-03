@@ -3,15 +3,17 @@ import Post from './Post'
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
+      <div className='App'>
+        <div className='catagory-list'>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/components/App.js</code> and save to reload.
-        </p>
+        <div className='post-list'>
+        </div>
       </div>
     );
   }
