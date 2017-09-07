@@ -3,9 +3,13 @@ import { combineReducers } from 'redux'
 import {
   CREATE_POST,
   EDIT_POST,
+  VOTE_POST_UP,
+  VOTE_POST_DOWN,
   DELETE_POST,
   CREATE_COMMENT,
   EDIT_COMMENT,
+  VOTE_COMMENT_UP,
+  VOTE_COMMENT_DOWN,
   DELETE_COMMENT,
 } from '../actions'
 
@@ -19,7 +23,15 @@ function posts(state, action) {
       }
     case EDIT_POST :
       return {
-        
+
+      }
+    case VOTE_POST_UP :
+      return {
+
+      }
+    case VOTE_POST_DOWN :
+      return {
+
       }
     case DELETE_POST :
       return {
@@ -41,6 +53,14 @@ function comments(state, action) {
     case EDIT_COMMENT :
       return {
 
+      }
+    case VOTE_COMMENT_UP :
+      return {
+
+      }
+    case VOTE_COMMENT_DOWN :
+      return {
+        
       }
     case DELETE_COMMENT :
       return {

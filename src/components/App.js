@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Post from './Post'
-import './App.css';
+import './App.css'
 
 class App extends Component {
   componentDidMount() {
@@ -19,4 +19,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
