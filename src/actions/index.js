@@ -1,3 +1,4 @@
+export const INIT_CATEGORIES = 'INIT_CATEGORIES'
 export const CREATE_POST = 'CREATE_POST'
 export const EDIT_POST = 'EDIT_POST'
 export const VOTE_POST_UP = 'VOTE_POST_UP'
@@ -9,7 +10,14 @@ export const VOTE_COMMENT_UP = 'VOTE_COMMENT_UP'
 export const VOTE_COMMENT_DOWN = 'VOTE_COMMENT_DOWN'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 
-export function createPost ({ id, timestamp, title, body, author, category, voteScore }) {
+export function initCategories(categories) {
+  return {
+    type: INIT_CATEGORIES,
+    categories,
+  }
+}
+
+export function createPost ({ id, timestamp, title, body, author, category }) {
   return {
     type: CREATE_POST,
     id,
@@ -18,19 +26,15 @@ export function createPost ({ id, timestamp, title, body, author, category, vote
     body,
     author,
     category,
-    voteScore,
   }
 }
 
-export function editPost ({ id, title, body, author, category, voteScore }) {
+export function editPost ({ id, title, body }) {
   return {
     type: EDIT_POST,
     id,
     title,
     body,
-    author,
-    category,
-    voteScore,
   }
 }
 

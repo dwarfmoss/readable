@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 
 import {
+  INIT_CATEGORIES,
   CREATE_POST,
   EDIT_POST,
   VOTE_POST_UP,
@@ -13,65 +14,17 @@ import {
   DELETE_COMMENT,
 } from '../actions'
 
-function posts(state, action) {
-  const { id, timestamp, title, body, author, category, voteScore, deleted } = action
-
+function categories(state = [], action) {
+  const { categories } = action
+  
   switch(action.type) {
-    case CREATE_POST :
-      return {
-
-      }
-    case EDIT_POST :
-      return {
-
-      }
-    case VOTE_POST_UP :
-      return {
-
-      }
-    case VOTE_POST_DOWN :
-      return {
-
-      }
-    case DELETE_POST :
-      return {
-
-      }
-    default :
-      return state
-  }
-}
-
-function comments(state, action) {
-  const { id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted } = action
-
-  switch(action.type) {
-    case CREATE_COMMENT :
-      return {
-
-      }
-    case EDIT_COMMENT :
-      return {
-
-      }
-    case VOTE_COMMENT_UP :
-      return {
-
-      }
-    case VOTE_COMMENT_DOWN :
-      return {
-        
-      }
-    case DELETE_COMMENT :
-      return {
-
-      }
+    case INIT_CATEGORIES  :
+      return categories
     default :
       return state
   }
 }
 
 export default combineReducers({
-  posts,
-  comments,
+  categories,
 })

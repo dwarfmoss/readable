@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
-import Comment from './Comment'
 
-class Post extends Component {
+class PostHeader extends Component {
 
   render() {
     const { post } = this.props
     
     return (
-      <div className='post'>
+      <div className='post-header'>
         {post.title}
       </div>
     )
   }
 }
 
-export default Post
+export default PostHeader
