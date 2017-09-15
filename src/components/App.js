@@ -29,10 +29,6 @@ class App extends Component {
             </li>
           ))}
         </ul>
-        <p>
-          Talking to the backend yields these categories: <br/>
-          {categories}
-        </p>
       </div>
     );
   }
