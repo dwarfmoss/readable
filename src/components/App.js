@@ -4,14 +4,12 @@ import { connect } from 'react-redux'
 import PostList from './PostList'
 import Category from './Category'
 import './App.css'
-import { getCategories, getPosts } from "../util/readableAPI"
-import { initCategories } from '../actions'
+import { fetchAllCategories, fetchAllPosts } from '../actions'
 
 class App extends Component {
   componentDidMount() {
-    getCategories().then(data => {
-      this.props.setCategories(data.categories)
-    })
+    this.props.setAllCategories()
+    this.props.setPosts()
   }
   
   render() {
@@ -20,7 +18,7 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='App-header'>
-          
+          <h1>This is a Header</h1>
         </div>
         <ul className='category-list'>
           {categories.map(category => (
@@ -42,7 +40,8 @@ function mapStateToProps({ categories }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setCategories: (data) => dispatch(initCategories(data)),
+    setAllCategories: () => dispatch(fetchAllCategories()),
+    setPosts: () => dispatch(fetchAllPosts()),
   }
 }
 

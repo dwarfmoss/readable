@@ -1,4 +1,7 @@
+import { getAllCategories, getAllPosts } from "../util/readableAPI"
+
 export const INIT_CATEGORIES = 'INIT_CATEGORIES'
+export const SET_ALL_POSTS = 'SET_ALL_POSTS'
 export const CREATE_POST = 'CREATE_POST'
 export const EDIT_POST = 'EDIT_POST'
 export const VOTE_POST_UP = 'VOTE_POST_UP'
@@ -10,12 +13,25 @@ export const VOTE_COMMENT_UP = 'VOTE_COMMENT_UP'
 export const VOTE_COMMENT_DOWN = 'VOTE_COMMENT_DOWN'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 
-export function initCategories(categories) {
-  return {
-    type: INIT_CATEGORIES,
-    categories,
-  }
-}
+export const receiveAllCategories = categories => ({
+  type: INIT_CATEGORIES,
+  categories,
+})
+
+export const fetchAllCategories = () => dispatch => (
+  getAllCategories()
+  .then(data => dispatch(receiveAllCategories(data.categories)))
+)
+
+export const receiveAllPosts = posts => ({
+  type: SET_ALL_POSTS,
+  posts,
+})
+
+export const fetchAllPosts = () => dispatch => (
+  getAllPosts()
+  .then(data => dispatch(receiveAllPosts(data)))
+)
 
 export function createPost ({ id, timestamp, title, body, author, category }) {
   return {
