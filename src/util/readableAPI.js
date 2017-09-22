@@ -9,11 +9,24 @@ export function getAllCategories() {
     .then(res => res.json())
 }
 
-export function getAllPosts() {
-  const url = `http://localhost:3001/posts`
+export function getPosts(category) {
+  const url = category === '' ? `http://localhost:3001/posts` : `http://localhost:3001/${category}/posts`
   const requestInit = { method: 'GET', headers: requestHeaders }
   console.log('fetching from url', url);
   
   return fetch(url, requestInit)
     .then(res => res.json())
+}
+
+export function postPost(newPost) {
+  const url = `http://localhost:3001/posts`
+  const requestInit = {
+    method: 'POST',
+    headers: requestHeaders,
+    body: newPost.stringify()
+  }
+  console.log('posting to url', url);
+  
+  return fetch(url, requestInit)
+  .then(res => res.json())
 }

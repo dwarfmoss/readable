@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 
 import {
   INIT_CATEGORIES,
-  SET_ALL_POSTS,
+  SET_POSTS,
 } from '../actions'
 
 function categories(state = [], action) {
@@ -20,7 +20,7 @@ function posts(state = [], action) {
   const { posts } = action
   
   switch(action.type) {
-    case SET_ALL_POSTS :
+    case SET_POSTS :
       return posts
     default :
       return state

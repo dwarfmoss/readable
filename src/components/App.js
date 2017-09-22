@@ -4,44 +4,57 @@ import { connect } from 'react-redux'
 import PostList from './PostList'
 import Category from './Category'
 import './App.css'
-import { fetchAllCategories, fetchAllPosts } from '../actions'
+import { fetchAllCategories, fetchPosts } from '../actions'
 
 class App extends Component {
   componentDidMount() {
     this.props.setAllCategories()
-    this.props.setPosts()
+    this.props.setPosts('')
   }
   
   render() {
-    const { categories } = this.props
+    const { categories, posts } = this.props
     
     return (
       <div className='App'>
         <div className='App-header'>
           <h1>This is a Header</h1>
         </div>
-        <ul className='category-list'>
-          {categories.map(category => (
-            <li key={category.name}>
-              <Category category={category} />
-            </li>
-          ))}
-        </ul>
+        <div className='navigation'>
+          <div className='categories'>
+            <h3>Categories</h3>
+            <ul className='category-list'>
+              <Category category={{name: 'all', path: ''}} />
+              {categories.map(category => (
+                <li key={category.name}>
+                  <Category category={category} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className='content'>
+          <div className='posts'>
+            <h3>Posts</h3>
+            <PostList posts={posts} />
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-function mapStateToProps({ categories }) {
+function mapStateToProps({ categories, posts }) {
   return {
-    categories
+    categories,
+    posts
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     setAllCategories: () => dispatch(fetchAllCategories()),
-    setPosts: () => dispatch(fetchAllPosts()),
+    setPosts: (category) => dispatch(fetchPosts(category)),
   }
 }
 

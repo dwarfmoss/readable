@@ -1,34 +1,83 @@
 .App {
+  min
+  min-width: 530px;
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  position: relative;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 100px;
   padding: 20px;
   color: white;
 }
 
-.App-intro {
-  font-size: large;
+.content {
+  min-width: inherit;
+  position: relative;
+  text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.categories {
+  float: left;
+  width: 130px;
+  margin: 5px;
+  clear: right;
+}
+
+.posts {
+  float: left;
+  margin: 5px;
+  background-color: #b8b8b8;
 }
 
 .category-list {
   list-style-type: none;
-  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
 .post-list {
   list-style-type: none;
-  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+.vote-score {
+  height: 50px;
+  float: right;
+}
+
+.category {
+  margin-bottom: 3px;
+  padding: 5px;
+  background-color: #222;
+  color: white;
+}
+
+.category:hover {
+  background-color: blue;
+  color: white;
+}
+
+.post-header {
+  height: 50px;
+  background-color: #ffffe3;
+}
+
+.post-title {
+  float: left;
+}
+
+.vote-down {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: red;
+}
+
+.vote-up {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: green;
 }

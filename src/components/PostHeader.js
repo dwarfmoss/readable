@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import VoteScore from './VoteScore'
 
 class PostHeader extends Component {
 
@@ -7,7 +8,10 @@ class PostHeader extends Component {
     
     return (
       <div className='post-header'>
-        {post.title}
+        <div className='post-title'>
+          {post.title}
+        </div>
+        <VoteScore voteScore={post.voteScore} />
       </div>
     )
   }
