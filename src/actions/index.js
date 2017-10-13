@@ -28,7 +28,7 @@ export const receivePosts = posts => ({
   posts,
 })
 
-export const fetchPosts = (category) => dispatch => (
+export const fetchPosts = category => dispatch => (
   getPosts(category)
   .then(data => dispatch(receivePosts(data)))
 )

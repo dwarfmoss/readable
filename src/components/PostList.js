@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 import PostHeader from './PostHeader'
 
 class PostList extends Component {
   render() {
     const { posts } = this.props
+    
     return (
       <ul className='post-list'>
         {posts.map(post => (
@@ -16,4 +19,8 @@ class PostList extends Component {
   }
 }
 
-export default PostList
+function mapStateToProps({ posts }) {
+  return { posts }
+}
+
+export default withRouter(connect(mapStateToProps)(PostList))

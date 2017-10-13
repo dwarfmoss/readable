@@ -49,16 +49,24 @@
   float: right;
 }
 
-.category {
+.navigation ul li {
   margin-bottom: 3px;
   padding: 5px;
   background-color: #222;
+}
+
+.navigation a {
+  text-decoration: none;
   color: white;
 }
 
-.category:hover {
+.navigation ul li:hover {
   background-color: blue;
-  color: white;
+}
+
+.category {
+  padding: 5px;
+  clear: both;
 }
 
 .post-header {
@@ -68,6 +76,10 @@
 
 .post-title {
   float: left;
+}
+
+.vote:hover {
+  background-color: #b8b8b8;
 }
 
 .vote-down {

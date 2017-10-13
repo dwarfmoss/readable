@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PostList from './PostList'
 import Category from './Category'
@@ -13,7 +13,7 @@ class App extends Component {
   }
   
   render() {
-    const { categories, posts } = this.props
+    const { categories } = this.props
     
     return (
       <div className='App'>
@@ -24,7 +24,9 @@ class App extends Component {
           <div className='categories'>
             <h3>Categories</h3>
             <ul className='category-list'>
-              <Category category={{name: 'all', path: ''}} />
+              <li>
+                <Category category={{name: 'all', path: ''}} />
+              </li>
               {categories.map(category => (
                 <li key={category.name}>
                   <Category category={category} />
@@ -36,7 +38,7 @@ class App extends Component {
         <div className='content'>
           <div className='posts'>
             <h3>Posts</h3>
-            <PostList posts={posts} />
+            <Route path='/:category?' component={PostList} />
           </div>
         </div>
       </div>
@@ -44,10 +46,9 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ categories, posts }) {
+function mapStateToProps({ categories }) {
   return {
-    categories,
-    posts
+    categories
   }
 }
 
@@ -58,4 +59,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

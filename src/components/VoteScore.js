@@ -5,7 +5,7 @@ const VoteScore = (props) => {
   
   return (
     <div className='vote-score'>
-      Score: <span className='vote-down'>-</span>{voteScore}<span className='vote-up'>+</span>
+      Score: <span className='vote vote-down'>-</span>{voteScore}<span className='vote vote-up'>+</span>
     </div>
   )
 }
