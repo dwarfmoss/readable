@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Route, withRouter } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PostList from './PostList'
-import Category from './Category'
+import Post from './Post'
+import CategoryList from './CategoryList'
 import './App.css'
 import { fetchAllCategories, fetchPosts } from '../actions'
 
@@ -13,7 +14,6 @@ class App extends Component {
   }
   
   render() {
-    const { categories } = this.props
     
     return (
       <div className='App'>
@@ -21,25 +21,13 @@ class App extends Component {
           <h1>This is a Header</h1>
         </div>
         <div className='navigation'>
-          <div className='categories'>
-            <h3>Categories</h3>
-            <ul className='category-list'>
-              <li>
-                <Category category={{name: 'all', path: ''}} />
-              </li>
-              {categories.map(category => (
-                <li key={category.name}>
-                  <Category category={category} />
-                </li>
-              ))}
-            </ul>
-          </div>
+          <CategoryList />
         </div>
         <div className='content'>
-          <div className='posts'>
-            <h3>Posts</h3>
-            <Route path='/:category?' component={PostList} />
-          </div>
+          <Switch>
+            <Route exact path='/:category?' component={PostList} />
+            <Route strict exact path='/:category?/:post?' component={Post} />
+          </Switch>
         </div>
       </div>
     );

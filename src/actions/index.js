@@ -1,8 +1,16 @@
-import { getAllCategories, getPosts } from "../util/readableAPI"
+import {
+  getAllCategories,
+  getPosts,
+  getPostComments,
+  getSelectedPost,
+} from "../util/readableAPI"
 
 export const INIT_CATEGORIES = 'INIT_CATEGORIES'
 export const SET_POSTS = 'SET_POSTS'
 export const CREATE_POST = 'CREATE_POST'
+export const SET_COMMENTS = 'GET_POST_COMMENTS'
+export const SET_SELECTED_POST = 'SET_SELECTED_POST'
+
 export const EDIT_POST = 'EDIT_POST'
 export const VOTE_POST_UP = 'VOTE_POST_UP'
 export const VOTE_POST_DOWN = 'VOTE_POST_DOWN'
@@ -31,6 +39,26 @@ export const receivePosts = posts => ({
 export const fetchPosts = category => dispatch => (
   getPosts(category)
   .then(data => dispatch(receivePosts(data)))
+)
+
+export const receiveSelectedPost = selectedPost => ({
+  type: SET_SELECTED_POST,
+  selectedPost,
+})
+
+export const fetchSelectedPost = postId => dispatch => (
+  getSelectedPost(postId)
+  .then(data => dispatch(receiveSelectedPost(data)))
+)
+
+export const receivePostComments = comments => ({
+  type: SET_COMMENTS,
+  comments,
+})
+
+export const fetchPostComments = postId => dispatch => (
+  getPostComments(postId)
+  .then(data => dispatch(receivePostComments(data)))
 )
 
 export function createPost ({ id, timestamp, title, body, author, category }) {

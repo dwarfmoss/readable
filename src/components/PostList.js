@@ -8,13 +8,17 @@ class PostList extends Component {
     const { posts } = this.props
     
     return (
-      <ul className='post-list'>
-        {posts.map(post => (
-          <li key={post.id}>
-            <PostHeader post={post} />
-          </li>
-        ))}
-      </ul>
+      <div className='posts-view'>
+        <h3>Posts</h3>
+        <ul className='post-list'>
+          {posts.map(post => (
+            <li key={post.id}>
+              <PostHeader post={post} />
+            </li>
+          ))}
+        </ul>
+      </div>
+      
     )
   }
 }

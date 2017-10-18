@@ -25,10 +25,16 @@
   clear: right;
 }
 
-.posts {
+.posts-view {
   float: left;
   margin: 5px;
   background-color: #b8b8b8;
+}
+
+.post-view {
+  float: left;
+  margin: 5px;
+  background-color: #0f6;
 }
 
 .category-list {
@@ -71,11 +77,17 @@
 
 .post-header {
   height: 50px;
-  background-color: #ffffe3;
+  background-color: #fff;
 }
 
 .post-title {
   float: left;
+}
+
+.comment-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .vote:hover {

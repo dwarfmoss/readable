@@ -1,17 +1,31 @@
 import React, { Component } from 'react'
-import Comment from './Comment'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import CommentList from './CommentList'
 
 class Post extends Component {
 
   render() {
-    const { post } = this.props
+    const { selectedPost } = this.props
     
     return (
-      <div className='post'>
-        {post.title}
+      <div className='post-view'>
+        <div className='post'>
+          <h3>{selectedPost.title}</h3>
+          <p>
+            {selectedPost.body}
+          </p>
+          <CommentList />
+        </div>
       </div>
     )
   }
 }
 
-export default Post
+function mapStateToProps({ selectedPost }) {
+  return {
+    selectedPost,
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(Post))

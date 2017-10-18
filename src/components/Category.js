@@ -6,7 +6,6 @@ import { fetchPosts } from '../actions'
 
 class Category extends Component {
   handleClick = (e) => {
-    e.preventDefault()
     this.props.setPosts(this.props.category.path)
   }
   
