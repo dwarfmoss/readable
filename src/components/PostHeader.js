@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import VoteScore from './VoteScore'
-import { fetchPostComments, fetchSelectedPost } from '../actions'
+import { fetchPostComments, fetchSelectedEntry } from '../actions'
 
 class PostHeader extends Component {
   handleClick = (e) => {
@@ -32,7 +32,7 @@ function mapStateToProps() {
 function mapDispatchToProps(dispatch) {
   return {
     getComments: (postId) => dispatch(fetchPostComments(postId)),
-    selectPost: (postId) => dispatch(fetchSelectedPost(postId)),
+    selectPost: (postId) => dispatch(fetchSelectedEntry(postId, 'post')),
   }
 }
 

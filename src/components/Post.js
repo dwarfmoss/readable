@@ -6,14 +6,13 @@ import CommentList from './CommentList'
 class Post extends Component {
 
   render() {
-    const { selectedPost } = this.props
     
     return (
       <div className='post-view'>
         <div className='post'>
-          <h3>{selectedPost.title}</h3>
+          <h3>The Post Title</h3>
           <p>
-            {selectedPost.body}
+            The post Body.
           </p>
           <CommentList />
         </div>
@@ -22,9 +21,9 @@ class Post extends Component {
   }
 }
 
-function mapStateToProps({ selectedPost }) {
+function mapStateToProps() {
   return {
-    selectedPost,
+    
   }
 }
 

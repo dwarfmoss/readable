@@ -4,7 +4,6 @@ import {
   INIT_CATEGORIES,
   SET_POSTS,
   SET_COMMENTS,
-  SET_SELECTED_POST,
 } from '../actions'
 
 function categories(state = [], action) {
@@ -40,20 +39,8 @@ function comments(state = [], action) {
   }
 }
 
-function selectedPost(state = {}, action) {
-  const { selectedPost } = action
-  
-  switch(action.type) {
-    case SET_SELECTED_POST :
-      return selectedPost
-    default :
-      return state
-  }
-}
-
 export default combineReducers({
   categories,
   posts,
   comments,
-  selectedPost,
 })
