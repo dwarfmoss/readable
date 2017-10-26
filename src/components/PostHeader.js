@@ -15,12 +15,20 @@ class PostHeader extends Component {
     const { post } = this.props
     
     return (
-      <Link to={`/${post.category}/${post.id}`} className='post-header' onClick={this.handleClick}>
-        <div className='post-title'>
-          {post.title}
-        </div>
+      <div className='post-header'>
         <VoteScore voteScore={post.voteScore} />
-      </Link>
+        <Link to={`/${post.category}/${post.id}`} onClick={this.handleClick}>
+          <div className='post-title'>
+            {post.title}
+          </div>
+          <div className='post-author'>
+            {post.author}
+          </div>
+          <div className='post-num-comments'>
+            {post.id.charAt(3)}
+          </div>
+        </Link>
+      </div>
     )
   }
 }

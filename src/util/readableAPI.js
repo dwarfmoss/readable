@@ -10,7 +10,9 @@ export function getAllCategories() {
 }
 
 export function getPosts(category) {
-  const url = category === '' ? `http://localhost:3001/posts` : `http://localhost:3001/${category}/posts`
+  const url = category === '' ?
+    `http://localhost:3001/posts` :
+    `http://localhost:3001/${category}/posts`
   const requestInit = { method: 'GET', headers: requestHeaders }
   console.log('fetching all posts from url', url);
   

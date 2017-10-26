@@ -1,11 +1,22 @@
 import React from 'react'
+import vote from '../util/readableAPI'
+
+function handleClick(event) {
+  if(event.target.text === '-') {
+    
+  } else {
+    
+  }
+}
 
 const VoteScore = (props) => {
   const { voteScore } = props
   
   return (
     <div className='vote-score'>
-      Score: <span className='vote vote-down'>-</span>{voteScore}<span className='vote vote-up'>+</span>
+      <span className='vote vote-down' onClick={handleClick}>-</span>
+      {voteScore}
+      <span className='vote vote-up' onClick={handleClick}>+</span>
     </div>
   )
 }

@@ -4,9 +4,7 @@ import { connect } from 'react-redux'
 import CommentList from './CommentList'
 
 class Post extends Component {
-
   render() {
-    
     return (
       <div className='post-view'>
         <div className='post'>

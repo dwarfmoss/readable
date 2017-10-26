@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Modal } from 'react-modal'
 import PostList from './PostList'
 import Post from './Post'
 import CategoryList from './CategoryList'
@@ -18,7 +19,7 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='App-header'>
-          <h1>This is a Header</h1>
+          <h1>Readable</h1>
         </div>
         <div className='navigation'>
           <CategoryList />

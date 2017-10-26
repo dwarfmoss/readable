@@ -1,7 +1,7 @@
 .App {
   min
   min-width: 530px;
-  text-align: center;
+  text-align: left;
   position: relative;
 }
 
@@ -10,31 +10,22 @@
   height: 100px;
   padding: 20px;
   color: white;
+  text-align: center;
 }
 
 .content {
+  display: flex;
   min-width: inherit;
   position: relative;
   text-align: left;
 }
+
 
 .categories {
   float: left;
   width: 130px;
   margin: 5px;
   clear: right;
-}
-
-.posts-view {
-  float: left;
-  margin: 5px;
-  background-color: #b8b8b8;
-}
-
-.post-view {
-  float: left;
-  margin: 5px;
-  background-color: #0f6;
 }
 
 .category-list {
@@ -44,15 +35,9 @@
   text-align: left;
 }
 
-.post-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.vote-score {
-  height: 50px;
-  float: right;
+.category {
+  padding: 5px;
+  clear: both;
 }
 
 .navigation ul li {
@@ -70,24 +55,52 @@
   background-color: blue;
 }
 
-.category {
-  padding: 5px;
-  clear: both;
+
+.posts-view {
+  margin: 5px;
+  background-color: #b8b8b8;
 }
+
+.posts-view h3 {
+  display: flex;
+}
+
+.post-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 
 .post-header {
   height: 50px;
   background-color: #fff;
 }
 
-.post-title {
-  float: left;
+.post-title,
+.post-author,
+.post-num-comments {
+  display: inline-block;
+  padding: 5px;
 }
+
+
+.post-view {
+  margin: 5px;
+  background-color: #0f6;
+}
+
 
 .comment-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+
+.vote-score {
+  height: 50px;
+  float: left;
 }
 
 .vote:hover {
