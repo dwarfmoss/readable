@@ -35,22 +35,13 @@ class PostList extends Component {
     const sortedPosts = this.sortPosts('voteScore')
     
     return (
-      <div className='posts-view'>
-        <h3>
-          <div>Vote</div>
-          <div>Title</div>
-          <div>Author</div>
-          <div>Comments</div>
-        </h3>
-        <ul className='post-list'>
-          {sortedPosts.map(post => (
-            <li key={post.id}>
-              <PostHeader post={post} />
-            </li>
-          ))}
-        </ul>
-      </div>
-      
+      <ul className='post-list'>
+        {sortedPosts.map(post => (
+          <li key={post.id}>
+            <PostHeader post={post} />
+          </li>
+        ))}
+      </ul>
     )
   }
 }
