@@ -11,6 +11,10 @@ import { fetchAllCategories, fetchPosts } from '../actions'
 class App extends Component {
   state = {
     newPostModal: false,
+    newPostTitle: '',
+    newPostBody: '',
+    newPostAuthor: '',
+    newPostCategory: '',
   }
   
   componentDidMount() {
@@ -61,7 +65,11 @@ class App extends Component {
         >
           <div>
             <form>
+              <input autoFocus='true'></input>
               <input></input>
+              <input></input>
+              <input></input>
+              <input type='submit'></input>
             </form>
           </div>
         </Modal>
