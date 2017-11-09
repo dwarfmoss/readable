@@ -6,7 +6,7 @@ import PostList from './PostList'
 import Post from './Post'
 import CategoryList from './CategoryList'
 import './App.css'
-import { fetchAllCategories, fetchPosts } from '../actions'
+import { fetchAllCategories, fetchPosts, createPost } from '../actions'
 
 class App extends Component {
   state = {
@@ -22,11 +22,24 @@ class App extends Component {
     this.props.setPosts('')
   }
   
-  openNewPostModal = () => this.setState(() => ({ newPostModal: true }))
-  closeNewPostModal = () => this.setState(() => ({ newPostModal: false }))
+  openNewPostModal = () => this.setState({ newPostModal: true })
+  closeNewPostModal = () => this.setState({ newPostModal: false })
+  
+  handleChange = (event) => this.setState({ [event.target.name]: event.target.value })
+  
+  handleClick = (event) => {
+    event.preventDefault()
+    
+  }
   
   render() {
-    const { newPostModal } = this.state
+    const {
+      newPostModal,
+      newPostTitle,
+      newPostBody,
+      newPostAuthor,
+      newPostCategory
+    } = this.state
     
     return (
       <div className='App'>
@@ -64,12 +77,48 @@ class App extends Component {
           contentLabel='Modal'
         >
           <div>
-            <form>
-              <input autoFocus='true'></input>
-              <input></input>
-              <input></input>
-              <input></input>
-              <input type='submit'></input>
+            <form id='new-post'>
+              <label htmlFor='new-post-title'>Title</label>
+              <input
+                id='new-post-title'
+                name='newPostTitle'
+                type='text'
+                value={newPostTitle}
+                onChange={this.handleChange}
+                form='new-post'
+                autoFocus='true'
+                required='true'
+              ></input>
+              <label htmlFor='new-post-body'>Body</label>
+              <input
+                id='new-post-body'
+                name='newPostBody'
+                type='text'
+                value={newPostBody}
+                onChange={this.handleChange}
+                form='new-post'
+                required='true'
+              ></input>
+              <label htmlFor='new-post-author'>Author</label>
+              <input
+                id='new-post-author'
+                name='newPostAuthor'
+                type='text'
+                value={newPostAuthor}
+                onChange={this.handleChange}
+                form='new-post'
+                required='true'
+              ></input>
+              <label htmlFor='new-post-category'>Category</label>
+              <input
+                id='new-post-category'
+                name='newPostAuthor'
+                value={newPostCategory}
+                onChange={this.handleChange}
+                form='new-post'
+                required='true'
+              ></input>
+              <input type='submit' form='new-post' formMethod='post' onClick={this.handleClick}></input>
             </form>
           </div>
         </Modal>
@@ -90,6 +139,8 @@ function mapDispatchToProps(dispatch) {
   return {
     setAllCategories: () => dispatch(fetchAllCategories()),
     setPosts: (category) => dispatch(fetchPosts(category)),
+    createNewPost: (id, timestamp, title, body, author, category) =>
+      dispatch(createPost(id, timestamp, title, body, author, category)),
   }
 }
 
