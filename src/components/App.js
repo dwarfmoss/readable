@@ -7,6 +7,7 @@ import Post from './Post'
 import CategoryList from './CategoryList'
 import './App.css'
 import { fetchAllCategories, fetchPosts, createPost } from '../actions'
+import v4 from 'uuid'
 
 class App extends Component {
   state = {
@@ -29,7 +30,14 @@ class App extends Component {
   
   handleClick = (event) => {
     event.preventDefault()
-    
+    this.props.createNewPost({
+      id: v4(),
+      timestamp: Date.now(),
+      title: this.state.newPostTitle,
+      body: this.state.newPostBody,
+      author: this.state.newPostAuthor,
+      category: this.state.newPostCategory
+    })
   }
   
   render() {
@@ -90,15 +98,15 @@ class App extends Component {
                 required='true'
               ></input>
               <label htmlFor='new-post-body'>Body</label>
-              <input
+              <textarea
                 id='new-post-body'
                 name='newPostBody'
-                type='text'
+                type='textarea'
                 value={newPostBody}
                 onChange={this.handleChange}
                 form='new-post'
                 required='true'
-              ></input>
+              ></textarea>
               <label htmlFor='new-post-author'>Author</label>
               <input
                 id='new-post-author'
@@ -112,7 +120,7 @@ class App extends Component {
               <label htmlFor='new-post-category'>Category</label>
               <input
                 id='new-post-category'
-                name='newPostAuthor'
+                name='newPostCategory'
                 value={newPostCategory}
                 onChange={this.handleChange}
                 form='new-post'
@@ -139,8 +147,8 @@ function mapDispatchToProps(dispatch) {
   return {
     setAllCategories: () => dispatch(fetchAllCategories()),
     setPosts: (category) => dispatch(fetchPosts(category)),
-    createNewPost: (id, timestamp, title, body, author, category) =>
-      dispatch(createPost(id, timestamp, title, body, author, category)),
+    createNewPost: (newPost) =>
+      dispatch(createPost(newPost)),
   }
 }
 
