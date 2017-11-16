@@ -62,9 +62,10 @@ export function addNewEntry(newEntry, type) {
   const requestInit = {
     method: 'POST',
     headers: requestHeaders,
-    body: newEntry.stringify()
+    body: JSON.stringify(newEntry)
   }
   console.log(`posting a new ${type} to url`, url);
+  console.log(requestInit.body)
   
   return fetch(url, requestInit)
   .then(res => res.json())
@@ -77,7 +78,7 @@ export function editEntry(id, entry, type) {
   const requestInit = {
     method: 'PUT',
     headers: requestHeaders,
-    body: entry.stringify()
+    body: JSON.stringify(entry)
   }
   console.log(`editing ${type} ${id} at url`, url);
   
