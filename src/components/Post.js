@@ -5,6 +5,8 @@ import CommentList from './CommentList'
 
 class Post extends Component {
   render() {
+    const { match } = this.props
+    
     return (
       <div className='post-view'>
         <div className='post'>

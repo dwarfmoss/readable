@@ -74,8 +74,8 @@ export const receiveCreatePostResponse = (res, newPost) => ({
   newPost,
 })
 
-export const createPost = newPost => dispatch => (
-  addNewEntry(newPost, 'post')
+export const createPost = (newPost, type) => dispatch => (
+  addNewEntry(newPost, type)
   .then(data => dispatch(receiveCreatePostResponse(data, newPost)))
 )
 
@@ -85,7 +85,7 @@ export const receiveCreateCommentResponse = (res, newComment) => ({
   newComment,
 })
 
-export const createComment = newComment => dispatch => (
-  addNewEntry(newComment)
-  .then(data => dispatch(receivePostComments(data, newComment)))
+export const createComment = (newComment, type) => dispatch => (
+  addNewEntry(newComment, type)
+  .then(data => dispatch(receiveCreateCommentResponse(data, newComment)))
 )

@@ -38,10 +38,6 @@ class PostList extends Component {
     }
   }
   
-  filterPosts = (category) => {
-    
-  }
-  
   openNewPostModal = () => this.setState({ newPostModal: true })
   closeNewPostModal = () => this.setState({ newPostModal: false })
   
@@ -156,7 +152,7 @@ function mapStateToProps({ posts }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    createNewPost: (newPost) => dispatch(createPost(newPost)),
+    createNewPost: (newPost) => dispatch(createPost(newPost, 'post')),
   }
 }
 
