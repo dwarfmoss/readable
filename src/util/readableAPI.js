@@ -56,16 +56,18 @@ export function vote(id, voteDirection, voteType) {
 }
 
 export function addNewEntry(newEntry, type) {
+  const newEntryHeader = new Headers(requestHeaders)
+  newEntryHeader.append('Content-Type', 'application/json')
+  
   const url = type === 'comment' ?
     `http://localhost:3001/comments` :
     `http://localhost:3001/posts`
   const requestInit = {
     method: 'POST',
-    headers: requestHeaders,
+    headers: newEntryHeader,
     body: JSON.stringify(newEntry)
   }
   console.log(`posting a new ${type} to url`, url);
-  console.log(requestInit.body)
   
   return fetch(url, requestInit)
   .then(res => res.json())
