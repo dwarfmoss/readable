@@ -75,8 +75,8 @@ export const receiveCreatePostResponse = (res, newPost) => ({
 })
 
 export const createPost = newPost => dispatch => (
-  addNewEntry(newPost)
-  .then(data => dispatch(receivePostComments(data, newPost)))
+  addNewEntry(newPost, 'post')
+  .then(data => dispatch(receiveCreatePostResponse(data, newPost)))
 )
 
 
