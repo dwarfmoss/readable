@@ -18,7 +18,7 @@ class PostList extends Component {
   sortPosts = (sortBy) => {
     switch(sortBy) {
       case 'author' || 'title' :
-        return this.props.readable.posts.sort((a, b) => {
+        return this.props.posts.sort((a, b) => {
           const valueA = a[sortBy].toUpperCase();
           const valueB = b[sortBy].toUpperCase();
           if(valueA < valueB) {
@@ -32,7 +32,7 @@ class PostList extends Component {
           return 0
         })
       default :
-        return this.props.readable.posts.sort((a,b) => {
+        return this.props.posts.sort((a,b) => {
           return b[sortBy] - a[sortBy]
         })
     }
@@ -54,6 +54,7 @@ class PostList extends Component {
       category: this.state.newPostCategory
     })
   }
+  
   
   render() {
     const {
@@ -145,10 +146,8 @@ class PostList extends Component {
   }
 }
 
-function mapStateToProps({ readable }) {
-  return {
-    readable,
-  }
+function mapStateToProps({ posts }) {
+  return { posts }
 }
 
 function mapDispatchToProps(dispatch) {
