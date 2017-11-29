@@ -3,30 +3,17 @@ import {
   getPosts,
   getSpecificEntry,
   getPostComments,
-  vote,
   addNewEntry,
-  editEntry,
-  deleteEntry,
 } from "../util/readableAPI"
 
-export const INIT_CATEGORIES = 'INIT_CATEGORIES'
+export const SET_CATEGORIES = 'SET_CATEGORIES'
 export const SET_POSTS = 'SET_POSTS'
 export const SET_COMMENTS = 'GET_POST_COMMENTS'
 export const SET_SELECTED_POST = 'SET_SELECTED_POST'
 export const CREATE_POST = 'CREATE_POST'
-export const CREATE_COMMENT = 'CREATE_COMMENT'
-
-export const EDIT_POST = 'EDIT_POST'
-export const VOTE_POST_UP = 'VOTE_POST_UP'
-export const VOTE_POST_DOWN = 'VOTE_POST_DOWN'
-export const DELETE_POST = 'DELETE_POST'
-export const EDIT_COMMENT = 'EDIT_COMMENT'
-export const VOTE_COMMENT_UP = 'VOTE_COMMENT_UP'
-export const VOTE_COMMENT_DOWN = 'VOTE_COMMENT_DOWN'
-export const DELETE_COMMENT = 'DELETE_COMMENT'
 
 export const receiveAllCategories = categories => ({
-  type: INIT_CATEGORIES,
+  type: SET_CATEGORIES,
   categories,
 })
 
@@ -77,15 +64,4 @@ export const receiveCreatePostResponse = (res, newPost) => ({
 export const createPost = (newPost, type) => dispatch => (
   addNewEntry(newPost, type)
   .then(data => dispatch(receiveCreatePostResponse(data, newPost)))
-)
-
-
-export const receiveCreateCommentResponse = (res, newComment) => ({
-  type: CREATE_POST,
-  newComment,
-})
-
-export const createComment = (newComment, type) => dispatch => (
-  addNewEntry(newComment, type)
-  .then(data => dispatch(receiveCreateCommentResponse(data, newComment)))
 )

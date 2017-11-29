@@ -5,8 +5,6 @@ import CommentList from './CommentList'
 
 class Post extends Component {
   render() {
-    const { match } = this.props
-    
     return (
       <div className='post-view'>
         <div className='post'>
@@ -21,9 +19,9 @@ class Post extends Component {
   }
 }
 
-function mapStateToProps() {
+function mapStateToProps({ readable }) {
   return {
-    
+    readable,
   }
 }
 

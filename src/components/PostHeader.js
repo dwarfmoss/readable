@@ -33,8 +33,10 @@ class PostHeader extends Component {
   }
 }
 
-function mapStateToProps() {
-  return {}
+function mapStateToProps({ readable }) {
+  return {
+    readable,
+  }
 }
 
 function mapDispatchToProps(dispatch) {
